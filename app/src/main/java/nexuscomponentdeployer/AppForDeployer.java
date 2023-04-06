@@ -92,6 +92,8 @@ public class AppForDeployer {
                 multipart.addFormField("maven2.artifactId", artifactId);
                 multipart.addFormField("maven2.version", version);
                 multipart.addFormField("maven2.asset1.extension", "jar");
+                multipart.addFormField("maven2.generate-pom", "true");
+                multipart.addFormField("maven2.packaging", "jar");
                 multipart.addFilePart("maven2.asset1", jar);
                 int status = multipart.finish();
                 

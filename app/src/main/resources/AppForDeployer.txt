@@ -18,8 +18,8 @@ import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
 public class AppForDeployer {
+
     private static final String API_URL = "http://localhost:8081/nexus/service/rest/v1/components?repository=maven-releases";
-    
     private static final String RESOURCE_PACKAGE = "target/dependency/";
     private List<File> childJars = new ArrayList<>();
 
@@ -60,7 +60,7 @@ public class AppForDeployer {
         // URL url = AppForDeployer.class.getResource("/" + RESOURCE_PACKAGE);
         // if (url == null)
         //     throw new IOException("File not existing");
-        
+
         // File apps = new File(url.toURI());
         // for (File app : apps.listFiles()) {
         //     if (!app.getName().endsWith(".jar"))
@@ -82,7 +82,7 @@ public class AppForDeployer {
             String groupId = getGroupId(filename);
             String version = getVersion(filename);
             String artifactId = getArtifactId(filename, groupId, version);
-            
+
             System.out.println("uploading... : " + filename);
             int count = 0;
             while (count < 3) {
@@ -92,6 +92,8 @@ public class AppForDeployer {
                 multipart.addFormField("maven2.artifactId", artifactId);
                 multipart.addFormField("maven2.version", version);
                 multipart.addFormField("maven2.asset1.extension", "jar");
+                multipart.addFormField("maven2.generate-pom", "true");
+                multipart.addFormField("maven2.packaging", "jar");
                 multipart.addFilePart("maven2.asset1", jar);
                 int status = multipart.finish();
                 
