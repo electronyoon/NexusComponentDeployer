@@ -5,3 +5,8 @@
 build
 
 *.jar
+.idea
+.mvn
+.vscode
+gradle
+target
