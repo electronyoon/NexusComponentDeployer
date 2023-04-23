@@ -15,13 +15,12 @@ NexusComponentDeployer는 편리하게 Maven dependency를 다운로드하고, �
 
 - (컴파일) Java 11 이상, (런타임) Java 8 이상
 - Nexus Repository Manager 3 이상
-- Maven 3 이상
 
 ### 설치
 
 1. 인터넷이 사용 가능한 PC에서 이 저장소를 클론하거나 다운로드하세요.
 2. 압축을 해제한 후, 저장소의 루트 디렉토리로 이동하세요.
-3. pom.xml을 수정하여 원하는 디펜던시를 정의하고 저장하세요.
+3. pom.xml을 수정하여 원하는 디펜던시를 정의하고 저장하세요. Maven wrapper가 포함돼 있어 별도로 설치하지 않아도 괜찮습니다.
 4. 최초 빌드한 파일은 Nexus 업로드용 파일을 빌드합니다. 다음 명령을 실행하여 어플리케이션을 빌드하고 실행하세요:
 ```bash
 java -jar NexusComponentDeployer.jar
